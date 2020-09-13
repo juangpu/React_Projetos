@@ -1,22 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import '../App.css'
+import './Post.css'
 
-function Post() {
-
-    let qtdComentarios = 101;
-    let listaDeComentarios = ["Comentário 1", "Comentário 2"];
+function Post(props) {
 
   return (
     <div className="post">
-        <p> Sou um post </p>
-        <p> Cometários ({qtdComentarios > 100 ? "99+" : qtdComentarios}) </p>
+        <p> {props.post} </p>
+        <p> Cometários ({props.qtdComentarios}) </p>
 
         <ul>
-            {listaDeComentarios.map(comentario => <li> {comentario} </li> )}
+            {props.listaDeComentarios != null ?
+                props.listaDeComentarios.map((comentario, index) => <li key={comentario + index}> {comentario} </li>)
+              :
+                ""
+            }
         </ul>
     </div>
   );
+}
+
+Post.defaultProps = {
+  qtdComentarios: 0,
+  listaDeComentarios: null
+}
+
+Post.propTypes = {
+  qtdComentarios: PropTypes.number,
+  post: PropTypes.string
 }
 
 export default Post;
