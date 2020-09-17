@@ -5,8 +5,16 @@ import './Post.css'
 
 function Post(props) {
 
+  const mudaFonteAoPosicionarCursor = () => {
+    document.getElementById(props.id).style.fontSize = '25px';
+  }
+
+  const retornaFonteAoRemoverCursor = () => {
+    document.getElementById(props.id).style.fontSize = '16px'
+  }
+
   return (
-    <div className="post">
+    <div id={props.id} className="post" onMouseOver={mudaFonteAoPosicionarCursor} onMouseOut={retornaFonteAoRemoverCursor}>
         <p> {props.post} </p>
         <p> Cometários ({props.qtdComentarios}) </p>
 
