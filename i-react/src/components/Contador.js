@@ -1,8 +1,12 @@
-import React, { useState } from 'react';    
+import React, { useState, useEffect } from 'react';    
 
 function Contador() {
 
-    const [contador, setContador] = useState(0)
+    const [contador, setContador] = useState(0);
+
+    useEffect(() => {
+        console.log("O Contador foi alterado e possui o valor: " + contador);
+    })
 
     return (
         <div>
